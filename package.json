@@ -2,14 +2,21 @@
   "name": "dagobah-digital-garden",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "payload": "payload",
+    "generate:importmap": "payload generate:importmap",
+    "generate:types": "payload generate:types"
   },
   "dependencies": {
+    "@payloadcms/db-sqlite": "^3.87.0",
+    "@payloadcms/next": "^3.87.0",
     "next": "16.3.0",
+    "payload": "^3.87.0",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },

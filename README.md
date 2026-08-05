@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dagobah Digital Garden
 
-## Getting Started
+This is a [Next.js](https://nextjs.org) application with [Payload CMS](https://payloadcms.com) and a local SQLite database.
 
-First, run the development server:
+## Getting started
+
+Create your local environment file and set a secure secret:
+
+```bash
+cp .env.example .env.local
+```
+
+Then run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000/admin](http://localhost:3000/admin) and create the first administrator account. Posts are available through the Admin Panel and the REST API at `/api/posts`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The database defaults to `payload.db` in the project root and is ignored by Git. Set `DATABASE_URL` to a remote libSQL-compatible database URL before deploying.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+When changing Payload collections or Admin components, refresh generated artifacts:
 
-## Learn More
+```bash
+npm run generate:types
+npm run generate:importmap
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `npm run dev` — start Next.js and Payload locally
+- `npm run build` — create a production build
+- `npm run payload -- <command>` — run a Payload CLI command
+- `npm run generate:types` — update generated Payload TypeScript types
+- `npm run generate:importmap` — update the Admin Panel component import map

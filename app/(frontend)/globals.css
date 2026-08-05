@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #121311;
+  --paper: #f4f1e9;
+  --grid: rgba(38, 63, 52, 0.1);
+  --acid: #6f9b7c;
+  --line: #171915;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--paper); }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 18px 18px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.garden { min-height: 100svh; padding: clamp(1rem, 3vw, 3.25rem); }
+
+.masthead { border-bottom: 2px solid var(--line); padding-bottom: clamp(2.5rem, 8vw, 7rem); }
+
+.eyebrow, .card-meta, .status, .site-footer, .issue-mark, .post-card footer {
+  font-family: var(--font-geist-mono), "Courier New", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  line-height: 1.35;
+}
+
+.eyebrow { margin: 0 0 0.8rem; }
+
+.masthead-row { display: flex; justify-content: space-between; gap: 2rem; align-items: flex-start; }
+
+h1, h2, h3, p { margin-top: 0; }
+
+h1 {
+  max-width: 12ch;
+  margin-bottom: 0;
+  font-size: clamp(3.75rem, 12vw, 10rem);
+  font-weight: 400;
+  letter-spacing: -0.09em;
+  line-height: 0.72;
+}
+
+h1 span { color: var(--acid); }
+
+.issue-mark { margin: 0.4rem 0 0; text-align: right; white-space: nowrap; }
+
+.subhead { max-width: 28rem; margin: clamp(2rem, 5vw, 4rem) 0 0; font-size: clamp(1rem, 1.8vw, 1.45rem); line-height: 1.2; }
+
+.archive { padding: clamp(2.25rem, 6vw, 5rem) 0; }
+
+.archive-title { display: flex; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 1rem; }
+
+h2 { margin: 0; font-size: clamp(1.8rem, 4vw, 3.75rem); font-weight: 400; letter-spacing: -0.065em; line-height: 0.85; }
+
+.status { color: #315b41; padding-bottom: 0.15rem; }
+
+.post-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 2px solid var(--line); border-left: 2px solid var(--line); }
+
+.post-card { min-height: 17rem; display: flex; flex-direction: column; border-right: 2px solid var(--line); border-bottom: 2px solid var(--line); padding: 1rem; transition: background-color 160ms ease, color 160ms ease; }
+
+.post-card:hover { background: var(--ink); color: var(--paper); }
+
+.card-meta, .post-card footer { display: flex; justify-content: space-between; gap: 0.75rem; }
+
+.post-card h3 { margin: auto 0 0.8rem; font-size: clamp(1.4rem, 2.2vw, 2.2rem); font-weight: 400; letter-spacing: -0.055em; line-height: 0.95; }
+
+.post-card > p { display: -webkit-box; overflow: hidden; margin: 0 0 1.5rem; color: color-mix(in srgb, currentColor 72%, transparent); font-size: 0.86rem; line-height: 1.4; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+
+.post-card footer { border-top: 1px solid currentColor; padding-top: 0.65rem; }
+
+.empty-state { min-height: 16rem; display: grid; place-content: center; border: 2px solid var(--line); text-align: center; }
+.empty-marker { color: var(--acid); font-size: 3rem; line-height: 1; }
+.empty-state p { margin: 0.5rem 0; font-family: var(--font-geist-mono), monospace; font-size: 0.75rem; }
+.empty-state a { color: inherit; font-family: var(--font-geist-mono), monospace; font-size: 0.7rem; text-underline-offset: 0.2rem; }
+
+.site-footer { display: flex; justify-content: space-between; gap: 1rem; border-top: 2px solid var(--line); padding-top: 0.8rem; }
+
+@media (max-width: 700px) {
+  .garden { padding: 1rem; }
+  .masthead { padding-bottom: 3.5rem; }
+  .masthead-row { gap: 0.5rem; }
+  .issue-mark { font-size: 0.55rem; }
+  .post-grid { grid-template-columns: 1fr; }
+  .post-card { min-height: 13rem; }
+  .site-footer { flex-direction: column; gap: 0.35rem; }
+}
